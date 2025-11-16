@@ -1,0 +1,20 @@
+[Unit]
+Description=Arduino Uno Q Wi-Fi Monitoring Service
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/pi/wifi/wifi_monitor.py
+Restart=always
+RestartSec=10
+User=root
+
+# Bij crash binnen 5 minuten, geef op na 3 pogingen
+StartLimitInterval=300
+StartLimitBurst=3
+
+# Na limiet bereikt, trigger restart timer (10 minuten)
+OnFailure=wifi-monitor-restart.timer
+
+[Install]
+WantedBy=multi-user.target

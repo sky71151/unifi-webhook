@@ -1,0 +1,7 @@
+[Unit]
+Description=Herstart wifi-monitor.service na failure
+After=wifi-monitor.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/systemctl restart wifi-monitor.service

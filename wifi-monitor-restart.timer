@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer om wifi-monitor.service te herstarten na failure
+Requires=wifi-monitor-restart.service
+
+[Timer]
+OnUnitInactiveSec=10min
+Unit=wifi-monitor-restart.service
+
+[Install]
+WantedBy=timers.target
